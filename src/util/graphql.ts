@@ -56,6 +56,12 @@ export const CREATE_POST_MUTATION = gql`
   }
 `;
 
+export const DELETE_POST_MUTATION = gql`
+  mutation deletePost($postId: ID!){
+    deletePost(postId: $postId)
+  }
+`
+
 export const FETCH_POSTS_QUERY = gql`
   {
     getPosts {
@@ -77,3 +83,30 @@ export const FETCH_POSTS_QUERY = gql`
     }
   }
 `;
+
+export const FETCH_POST_QUERY =gql`
+  query($postId: ID!){
+    getPost(postId: $postId){
+      id body createdAt username likeCount
+      likes{
+        username
+      }
+      commentCount
+      comments{
+        id username createdAt body
+      }
+    }
+  }
+`
+
+export const LIKE_POST_MUTATION = gql`
+  mutation likePost($postId: ID!){
+    likePost(postId: $postId){
+      id 
+      likes{
+        id username
+      }
+      likeCount
+    }
+  }
+`
