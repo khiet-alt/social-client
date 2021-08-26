@@ -5,6 +5,8 @@ import moment from 'moment'
 
 import LikeButton from '../components/LikeButton'
 import DeleteButton from '../components/DeleteButton'
+import MyPopup from '../util/MyPopup'
+
 //gql
 import { FETCH_POST_QUERY, SUBMIT_COMMENT_MUTATION } from '../util/graphql'
 
@@ -59,16 +61,18 @@ export default function SinglePost(props: any) {
                             <hr/>
                             <Card.Content extra>
                                 <LikeButton user={user} post={{ id, likeCount, likes }} />
-                                <Button as="div" 
-                                    labelPosition="right"
-                                     >
-                                    <Button basic color="blue">
-                                        <Icon name="comments" />
+                                <MyPopup content="Content on post" >
+                                    <Button as="div" 
+                                        labelPosition="right"
+                                        >
+                                        <Button basic color="blue">
+                                            <Icon name="comments" />
+                                        </Button>
+                                        <Label basic color="blue" pointing="left">
+                                            {commentCount}
+                                        </Label>
                                     </Button>
-                                    <Label basic color="blue" pointing="left">
-                                        {commentCount}
-                                    </Label>
-                                </Button>
+                                </MyPopup>
                                 { user && user.username === username && (
                                     <DeleteButton postId={id} callback={deletePostCallback} />
                                 )}

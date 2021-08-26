@@ -2,8 +2,8 @@ import React from 'react'
 import { useMutation } from '@apollo/client'
 import { Link } from 'react-router-dom'
 import { Button, Label, Icon } from 'semantic-ui-react'
-//type check
-import { Like } from './PostCard'
+import MyPopup from '../util/MyPopup'
+
 //gql
 import { LIKE_POST_MUTATION } from '../util/graphql'
 
@@ -54,7 +54,9 @@ export default function LikeButton({post: { id, likes, likeCount }, user}: Prop)
 
     return (
         <Button as='div' labelPosition='right' onClick={() => likePost()}>
-          {checkLiked}
+          <MyPopup content={liked ? 'Unlike' : 'Like'}>
+              {checkLiked}
+          </MyPopup>
           <Label basic color='teal' pointing='left'>
             {likeCount}
           </Label>
