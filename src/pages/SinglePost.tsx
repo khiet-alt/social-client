@@ -1,6 +1,6 @@
 import React from 'react'
 import { useQuery, useMutation } from '@apollo/client'
-import { Grid, Image, Card, Button, Icon, Label, Form } from 'semantic-ui-react'
+import { Grid, Image, Card, Button, Icon, Form } from 'semantic-ui-react'
 import moment from 'moment'
 
 import LikeButton from '../components/LikeButton'
@@ -62,7 +62,7 @@ export default function SinglePost(props: any) {
                             <Card.Content extra>
                                 <Card.Meta style={{display: "flex"}} >
                                     <p style={{marginRight: '10px'}} >{`${likeCount} likes `}</p>
-                                    <p>{`${likeCount} comments `}</p>
+                                    <p>{`${commentCount} comments `}</p>
                                 </Card.Meta>
                                 <LikeButton user={user} post={{ id, likeCount, likes }} />
                                 <MyPopup content="Comment on Post">

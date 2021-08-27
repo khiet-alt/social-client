@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { Button, Card, Icon, Image, Dropdown } from 'semantic-ui-react';
+import { useContext } from 'react';
+import { Button, Card, Icon, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 

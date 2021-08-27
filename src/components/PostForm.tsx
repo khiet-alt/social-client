@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, TextArea } from 'semantic-ui-react';
+import { Button, Form } from 'semantic-ui-react';
 import { ApolloError, useMutation } from '@apollo/client';
 
 import { useForm } from '../util/hooks';
