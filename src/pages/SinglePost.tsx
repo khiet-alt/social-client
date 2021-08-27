@@ -49,9 +49,9 @@ export default function SinglePost(props: any) {
             <Grid>
                 <Grid.Row>
                     <Grid.Column width={2}>
-                        <Image floated="right" size="small" src="https://react.semantic-ui.com/images/avatar/large/molly.png" />
+                        <Image floated="right" size="small" avatar src="https://react.semantic-ui.com/images/avatar/large/molly.png" />
                     </Grid.Column>
-                    <Grid.Column width={10}>
+                    <Grid.Column width={14}>
                         <Card fluid>
                             <Card.Content>
                                 <Card.Header>{username}</Card.Header>
@@ -60,17 +60,14 @@ export default function SinglePost(props: any) {
                             </Card.Content>
                             <hr/>
                             <Card.Content extra>
+                                <Card.Meta style={{display: "flex"}} >
+                                    <p style={{marginRight: '10px'}} >{`${likeCount} likes `}</p>
+                                    <p>{`${likeCount} comments `}</p>
+                                </Card.Meta>
                                 <LikeButton user={user} post={{ id, likeCount, likes }} />
-                                <MyPopup content="Content on post" >
-                                    <Button as="div" 
-                                        labelPosition="right"
-                                        >
-                                        <Button basic color="blue">
-                                            <Icon name="comments" />
-                                        </Button>
-                                        <Label basic color="blue" pointing="left">
-                                            {commentCount}
-                                        </Label>
+                                <MyPopup content="Comment on Post">
+                                    <Button style={{background: "white"}} >
+                                        <Icon name='comments' style={{color: "#387b67"}} />comments
                                     </Button>
                                 </MyPopup>
                                 { user && user.username === username && (
@@ -103,7 +100,10 @@ export default function SinglePost(props: any) {
                                     { user && user.username === comment.username && (
                                         <DeleteButton postId={id} commentId={comment.id} />
                                     )}
-                                    <Card.Header>{comment.username}</Card.Header>
+                                    <Card.Header>
+                                        <Image floated="left" size="small" avatar src="https://react.semantic-ui.com/images/avatar/large/molly.png" />
+                                        {comment.username}
+                                    </Card.Header>
                                     <Card.Meta>{moment(comment.createdAt).fromNow()}</Card.Meta>
                                     <Card.Description>{comment.body}</Card.Description>
                                 </Card.Content>

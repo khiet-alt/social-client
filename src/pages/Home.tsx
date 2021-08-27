@@ -14,14 +14,14 @@ function Home() {
   if (error)  return <div>Error...</div>
 
   return (
-    <Grid columns={3}>
+    <Grid doubling>
       <Grid.Row className="page-title">
         <h1>Recent Posts</h1>
       </Grid.Row>
 
-      <Grid.Row>
+      <Grid.Row >
         {user && (
-          <Grid.Column>
+          <Grid.Column computer={5} tablet={8} mobile={16}>
             <PostForm />
           </Grid.Column>
         )}
@@ -31,7 +31,7 @@ function Home() {
           <Transition.Group>
             {data.getPosts &&
               data.getPosts.map((post: any) => (
-                <Grid.Column key={post.id} style={{ marginBottom: 20 }}>
+                <Grid.Column key={post.id} style={{ marginBottom: 20 }} computer={5} tablet={8} mobile={16}>
                   <PostCard post={post} />
                 </Grid.Column>
               ))}

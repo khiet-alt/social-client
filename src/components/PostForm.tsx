@@ -1,11 +1,14 @@
 import React from 'react';
-import { Button, Form } from 'semantic-ui-react';
+import { Button, Form, TextArea } from 'semantic-ui-react';
 import { ApolloError, useMutation } from '@apollo/client';
 
 import { useForm } from '../util/hooks';
 import { FETCH_POSTS_QUERY, CREATE_POST_MUTATION } from '../util/graphql';
 
+import { AuthContext } from '../context/auth'
+
 function PostForm() {
+  const { user } = React.useContext(AuthContext);
   const { values, onChange, onSubmit } = useForm(createPostCallback, {
     body: ''
   });
@@ -35,11 +38,12 @@ function PostForm() {
         <h2>Create a post:</h2>
         <Form.Field>
           <Form.Input
-            placeholder="Hi World!"
+            placeholder={user ? `How are u today, ${user.username} !` : `What's up bro ???`}
             name="body"
             onChange={onChange}
             value={values.body}
             error={error ? true : false}
+            style={{minHeight: "50px"}}
           />
           <Button type="submit" color="teal">
             Submit

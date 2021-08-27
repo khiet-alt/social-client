@@ -1,7 +1,7 @@
 import React from 'react'
 import { useMutation } from '@apollo/client'
 import { Link } from 'react-router-dom'
-import { Button, Label, Icon } from 'semantic-ui-react'
+import { Button, Icon } from 'semantic-ui-react'
 import MyPopup from '../util/MyPopup'
 
 //gql
@@ -35,31 +35,32 @@ export default function LikeButton({post: { id, likes, likeCount }, user}: Prop)
             console.log("err: ", err)
         }
     })
+    
+    const CheckLiked = (props: any) => {
+        if (user){
+            return (
+                liked ? (
+                    <Button color='white' {...props} style={{background: "white"}} >
+                        <Icon name='heart' color="red" />liked
+                    </Button>
+                ) : (
+                    <Button color='teal' {...props} style={{background: "white", color: "#737981"}}  >
+                        <Icon name='heart' style={{color: "#737981"}} />like
+                    </Button>
+                )
+            )
+        }
 
-    const checkLiked = user ? (
-        liked ? (
-            <Button color='teal'>
-                <Icon name='heart' />
-            </Button>
-        ) : (
-            <Button color='teal' basic>
-                <Icon name='heart' />
+        return (
+            <Button as={Link} to="/login" {...props} style={{background: "white", color: "#737981"}} >
+                <Icon name='heart' style={{color: "#737981"}} />like
             </Button>
         )
-    ) : (
-        <Button as={Link} to="/login" color='teal' basic>
-            <Icon name='heart' />
-        </Button>
-    )
+    }
 
     return (
-        <Button as='div' labelPosition='right' onClick={() => likePost()}>
           <MyPopup content={liked ? 'Unlike' : 'Like'}>
-              {checkLiked}
+              <CheckLiked onClick={() => likePost()}/>
           </MyPopup>
-          <Label basic color='teal' pointing='left'>
-            {likeCount}
-          </Label>
-        </Button>
     )
 }

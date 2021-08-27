@@ -42,9 +42,9 @@ export default function DeleteButton({ postId, callback, commentId = null }: Pro
     return (
         <>
             <MyPopup content={commentId ? "Delete comment" : "Delete post"} >
-                <Button as="div" color="red" floated="right"
+                <Button icon color="red" floated="right" style={{background: "white", color: "grey"}}
                     onClick={() => setConfirmOpen(true)} >
-                    <Icon name="trash" style={{margin: 0}} />
+                    <Icon name="trash" style={{color: "grey"}} />delete
                 </Button>
             </MyPopup>
             
