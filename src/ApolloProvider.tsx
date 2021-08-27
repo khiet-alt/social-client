@@ -5,7 +5,7 @@ import { setContext } from '@apollo/client/link/context';
 import { onError } from "@apollo/client/link/error";
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:5000/graphql'
+  uri: 'https://agile-temple-47476.herokuapp.com/'
 });
 
 const authLink = setContext((_, { headers }) => {

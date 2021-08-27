@@ -49,5 +49,6 @@
   },
   "devDependencies": {
     "@types/react-router-dom": "^5.1.8"
-  }
+  },
+  "proxy": "https://agile-temple-47476.herokuapp.com/"
 }
