@@ -4,7 +4,7 @@ import { setContext } from '@apollo/client/link/context';
 import { onError } from "@apollo/client/link/error";
 
 const httpLink = createHttpLink({
-  uri: 'https://agile-temple-47476.herokuapp.com/'
+  uri: 'https://social-mapden-backend.herokuapp.com/'
 });
 
 const authLink = setContext((_, { headers }) => {
